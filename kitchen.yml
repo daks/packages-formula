@@ -133,6 +133,111 @@ verifier:
     - cli
 
 suites:
+  - name: deb
+    excludes:
+      - ubuntu-16.04
+      - ubuntu-18.04
+      - centos-7
+      - fedora
+      - opensuse-leap-salt-minion
+    provisioner:
+      dependencies:
+        - name: node
+          repo: git
+          source: https://github.com/saltstack-formulas/node-formula.git
+      state_top:
+        base:
+          '*':
+            - node
+            - packages
+      pillars_from_files:
+        packages.sls: pillar.example
+      pillars:
+        top.sls:
+          base:
+            '*':
+            - node
+            - packages
+        node.sls:
+          node:
+            version: 11.11.0-1nodesource1
+            install_from_ppa: True
+            ppa:
+              repository_url: https://deb.nodesource.com/node_11.x
+
+  - name: ubu18
+    excludes:
+      - debian-9
+      - ubuntu-16.04
+      - centos-7
+      - fedora
+      - opensuse-leap-salt-minion
+    provisioner:
+      pillars_from_files:
+        packages.sls: test/salt/pillar/pillar.example.ubuntu.1804
+
+  - name: ubu16
+    excludes:
+      - debian-9
+      - ubuntu-18.04
+      - centos-7
+      - fedora
+      - opensuse-leap-salt-minion
+    provisioner:
+      pillars_from_files:
+        packages.sls: test/salt/pillar/pillar.example.ubuntu.1604
+
+  - name: fed
+    excludes:
+      - debian-9
+      - ubuntu-16.04
+      - ubuntu-18.04
+      - centos-7
+      - opensuse-leap-salt-minion
+    provisioner:
+      pillars_from_files:
+        packages.sls: test/salt/pillar/pillar.example.fedora
+
+  - name: sus
+    excludes:
+      - debian-9
+      - ubuntu-16.04
+      - ubuntu-18.04
+      - centos-7
+      - fedora
+    provisioner:
+      pillars_from_files:
+        packages.sls: test/salt/pillar/pillar.example.opensuse
+
+  - name: rpm
+    excludes:
+      - debian-9
+      - ubuntu-16.04
+      - ubuntu-18.04
+      - fedora
+      - opensuse-leap-salt-minion
+    provisioner:
+      dependencies:
+        - name: epel
+          repo: git
+          source: https://github.com/saltstack-formulas/epel-formula.git
+      state_top:
+        base:
+          '*':
+            - epel
+            - packages
+      pillars_from_files:
+        packages.sls: test/salt/pillar/pillar.example.redhat
+      pillars:
+        top.sls:
+          base:
+            '*':
+            - epel
+            - packages
+        epel.sls:
+          disabled: false
+
+suites:
   - name: default
     provisioner:
       state_top:
