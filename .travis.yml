@@ -31,8 +31,8 @@ services:
 env:
   matrix:
     - INSTANCE: debian-9
-    - INSTANCE: ubuntu-18.04
-    - INSTANCE: ubuntu-16.04
+    - INSTANCE: ubuntu-1804
+    - INSTANCE: ubuntu-1604
     - INSTANCE: centos-7
     - INSTANCE: fedora
     - INSTANCE: opensuse-leap-salt-minion

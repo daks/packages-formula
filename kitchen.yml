@@ -21,13 +21,13 @@ platforms:
       run_command: /lib/systemd/systemd
       provision_command:
         - apt-get update && apt-get install -y udev locales git
-  - name: ubuntu-18.04
+  - name: ubuntu-1804
     driver_config:
       image: ubuntu:18.04
       run_command: /lib/systemd/systemd
       provision_command:
         - apt-get update && apt-get install -y udev locales git
-  - name: ubuntu-16.04
+  - name: ubuntu-1604
     driver_config:
       image: ubuntu:16.04
       run_command: /lib/systemd/systemd
