@@ -38,7 +38,7 @@ when 'debian', 'ubuntu'
   held_packages = {
     'alien': '8.95',
     # To match also ubuntu16's
-    'iotop': '0.6-'
+#    'iotop': '0.6-'
   }
   lock_file = '/var/lib/dpkg/status'
 end
