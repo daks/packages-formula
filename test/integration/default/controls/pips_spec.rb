@@ -4,7 +4,6 @@ when 'fedora', 'opensuse'
   wanted_pips = []
 else
   wanted_pips = %w{
-    dxpy
     attrs
   }
 end

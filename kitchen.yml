@@ -107,14 +107,14 @@ suites:
       - fedora
       - opensuse-leap-salt-minion
     provisioner:
-      dependencies:
-        - name: node
-          repo: git
-          source: https://github.com/saltstack-formulas/node-formula.git
+#      dependencies:
+#        - name: node
+#          repo: git
+#          source: https://github.com/saltstack-formulas/node-formula.git
       state_top:
         base:
           '*':
-            - node
+#            - node
             - packages
       pillars_from_files:
         packages.sls: pillar.example
@@ -122,14 +122,14 @@ suites:
         top.sls:
           base:
             '*':
-            - node
+#            - node
             - packages
-        node.sls:
-          node:
-            version: 11.11.0-1nodesource1
-            install_from_ppa: True
-            ppa:
-              repository_url: https://deb.nodesource.com/node_11.x
+#        node.sls:
+#          node:
+#            version: 11.11.0-1nodesource1
+#            install_from_ppa: True
+#            ppa:
+#              repository_url: https://deb.nodesource.com/node_11.x
 
   - name: ubu18
     excludes:
